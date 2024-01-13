@@ -1,0 +1,56 @@
+﻿@model EmployeeEditViewModel
+
+
+@{
+    ViewBag.Title = "Edit Employee";
+    
+
+}
+
+
+<div class="container">
+    <form asp-controller="Home" asp-action="Edit" method="Post">
+        <input hidden asp-for="Id" />
+        
+        <div class="form-group">
+            <label asp-for="Name" class="col-form-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="Email" class="col-form-label"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="Department" class="col-form-label"></label>
+            <select asp-for="Department" class="custom-select mr-sm-2" asp-items="@Html.GetEnumSelectList<Dept>()">
+                <option value="">Please Select</option>
+            </select>
+            <span asp-validation-for="Department" class="text text-danger"></span>
+        </div>
+
+      
+        <div asp-validation-summary="All" class="text text-danger"></div>
+        <br />
+        <input class="btn btn-primary" type="submit" value="Update" />
+        <a asp-controller="home" asp-action="index" class="btn btn-primary">Cancel</a>
+        
+
+       
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

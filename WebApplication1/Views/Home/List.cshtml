@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Employee>
+
+@{
+    ViewBag.List = "Employee List";
+}
+
+<div class="container">
+    <h2>Employees</h2>
+    
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var emp in Model)
+            {
+                var photoPath = "~/images/" + (emp.PhotoPath ?? "burger.jpg");
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.Name</td>
+                <td>@emp.Email</td>
+                <td>@emp.Department</td>
+                <td>
+                        <a asp-controller="home" asp-action="details" asp-route-id="@emp.Id" class="btn btn-primary m-1">View</a>
+                        <a asp-controller="home" asp-action="edit" asp-route-id="@emp.Id"  class="btn btn-primary m-1">Edit</a>
+                        <a asp-controller="home" asp-action="delete" class="btn btn-danger m-1">Delete</a>
+
+                </td>
+                <td>
+                    <img class="imageL" src="@photoPath" asp-append-version="true" />
+
+                </td>
+                   
+            </tr>
+            <tr>
+                    
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@section Scripts {
+    <script src="~/js/tmp.js"></script>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+html {
+  font-size: 14px;
+}
+
+.imageThumbnail {
+    height:100px;
+    width: auto;
+}
+
+.imageL {
+    height: 50px;
+    width:auto;
+}
+
+.errorButton {
+    width:auto
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.btn {
+    width:75px;
+    
+}
+
+#car {
+    height:50px;
+    width:50px;
+}
+
+#key {
+    height:50px;
+    width:50px
+}

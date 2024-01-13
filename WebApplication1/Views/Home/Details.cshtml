@@ -1,0 +1,38 @@
+﻿@model HomeDetailsViewModel
+
+@{
+    var photoPath = "~/images/" + (Model.Employee.PhotoPath ?? "burger.jpg");
+
+}
+
+<div class="container">
+    <h2>This is Employee @Model.Employee.Name</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Department</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Employee.Id</td>
+                <td>@Model.Employee.Email</td>
+                <td>@Model.Employee.Department</td>
+                <td>
+                    <a asp-controller="home" asp-action="list" class="btn btn-primary m-1">Back</a>
+                    <a asp-controller="home" asp-action="edit" asp-route-id="@Model.Employee.Id" class="btn btn-primary m-1">Edit</a>
+                    <a asp-controller="home" asp-action="delete" class="btn btn-danger m-1">Delete</a>
+                </td>
+            </tr>
+           
+        </tbody>
+    </table>
+   </div>
+
+<div class="card-body text-center">
+    <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
+</div>
+
+
