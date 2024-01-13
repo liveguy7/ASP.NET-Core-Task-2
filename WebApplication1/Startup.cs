@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics;
@@ -29,9 +31,22 @@ namespace WebApplication1
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();
 
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequiredLength = 10;
+                options.Password.RequiredUniqueChars = 3;
+
+            });
+
             services.AddMvc(options =>
-                options.EnableEndpointRouting = false)
-                .AddXmlSerializerFormatters();
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                                 .RequireAuthenticatedUser()
+                                 .Build();
+                options.Filters.Add(new AuthorizeFilter(policy));
+                options.EnableEndpointRouting = false;
+            }).AddXmlSerializerFormatters();
+
             services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
             
             
@@ -69,6 +84,7 @@ namespace WebApplication1
             //{
             //    routes.MapRoute("default", "{controller}/{action}/{id}");
             //});
+
             //app.UseEndpoints(endpoints =>
             //{
             //    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");

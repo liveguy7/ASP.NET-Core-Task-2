@@ -5,9 +5,11 @@ using System.IO;
 using WebApplication1.Models;
 using WebApplication1.ViewModels;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication1.Controllers
 {
+    
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -22,16 +24,16 @@ namespace WebApplication1.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
-      
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
 
-        public ViewResult Details(int id)
+        public ViewResult Details(int? id)
         {
 
-            Employee employee = _employeeRepository.GetEmployee(id);
+            Employee employee = _employeeRepository.GetEmployee(id ?? 1);
             if(employee == null)
             {
                 Response.StatusCode = 404;
@@ -50,12 +52,14 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ViewResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Create(EmployeeCreateViewModel model)
         { 
             if (ModelState.IsValid)
@@ -87,6 +91,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ViewResult Edit(int id)
         {
             Employee emp = _employeeRepository.GetEmployee(id);
@@ -104,6 +109,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Edit(EmployeeEditViewModel model)
         {
             if (ModelState.IsValid)
@@ -121,7 +127,7 @@ namespace WebApplication1.Controllers
 
         }
 
-
+        [AllowAnonymous]
         public ViewResult List()
         {
             var model = _employeeRepository.GetAllEmployees();
@@ -129,7 +135,7 @@ namespace WebApplication1.Controllers
             return View(model);
         }
 
-       
+        [AllowAnonymous]
         public IActionResult Privacy()
         {
             return View();
