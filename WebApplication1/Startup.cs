@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +25,10 @@ namespace WebApplication1
             services.AddDbContextPool<AppDbContext>(options =>
                 options.UseSqlServer(_config.GetConnectionString("DefaultConnectionString")));
             //services.AddMvc();
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
+
             services.AddMvc(options =>
                 options.EnableEndpointRouting = false)
                 .AddXmlSerializerFormatters();
@@ -31,7 +36,7 @@ namespace WebApplication1
             
             
         }
-
+        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
@@ -57,6 +62,7 @@ namespace WebApplication1
             //app.UseFileServer();
             //app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
             //app.UseMvc();
             //app.UseMvc(routes =>
