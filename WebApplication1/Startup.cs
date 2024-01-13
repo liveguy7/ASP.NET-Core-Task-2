@@ -74,12 +74,12 @@ namespace WebApplication1
             //    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
             //});
 
-            app.Run(async (context) =>
-            {
-                await context.Response
-                    .WriteAsync("the site is temporarily unavailable");
+            //app.Run(async (context) =>
+            //{
+            //    await context.Response
+            //        .WriteAsync("the site is temporarily unavailable");
 
-            });
+            //});
         }
     }
 
