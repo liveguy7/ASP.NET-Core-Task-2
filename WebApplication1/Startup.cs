@@ -44,7 +44,7 @@ namespace WebApplication1
             {
                 app.UseDeveloperExceptionPage();
             }
-         
+            
 
             //FileServerOptions fFO = new FileServerOptions();
             //fFO.DefaultFilesOptions.DefaultFileNames.Clear();
