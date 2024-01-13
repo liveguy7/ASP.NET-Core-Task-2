@@ -13,6 +13,7 @@ namespace WebApplication1.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IEmployeeRepository _employeeRepository;
         private readonly IWebHostEnvironment _hostingEnvironment;
+        //private readonly ILogger _logger2;
 
         public HomeController(ILogger<HomeController> logger, IEmployeeRepository employeeRepository, IWebHostEnvironment hostingEnvironment)
         {

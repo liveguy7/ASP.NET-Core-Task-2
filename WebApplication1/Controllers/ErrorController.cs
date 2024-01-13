@@ -17,6 +17,7 @@ namespace WebApplication1.Controllers
         [Route("Error/{statusCode}")]
         public IActionResult HttpStatusCodeHandler(int statusCode)
         {
+            
             var statusCodeResult = HttpContext.Features.Get<IStatusCodeReExecuteFeature>();
 
             switch (statusCode)
