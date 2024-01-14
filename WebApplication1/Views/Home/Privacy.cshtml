@@ -1,10 +1,11 @@
 ﻿@model PrivacyViewModel
 
 <div class="container">
+    <a class="btn btn-primary" style="width:auto" asp-area="" asp-controller="Administration" asp-action="CreateRole">Create New Role</a><br />
+    <a class="btn btn-primary" style="width:auto" asp-area="" asp-controller="Administration" asp-action="ListRoles">List Roles</a><br />
+</div><br />
+<div class="container">
     <form asp-controller="Home" asp-action="Privacy" method="Post">
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Administration" asp-action="CreateRole">Create New Role</a>
-        </li><br />
     <div class="form-group">
             <label asp-for="FirstName" class="col-form-label"></label>
             <input asp-for="FirstName" class="form-control" />
@@ -19,6 +20,8 @@
         </div>
      
     <br />
-    <button type="submit" class="btn btn-danger">Submit</button>
+    <button type="submit" class="btn btn-danger">Submit</button><br />
 </form>
 </div>
+
+
