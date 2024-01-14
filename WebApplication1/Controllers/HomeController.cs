@@ -136,9 +136,18 @@ namespace WebApplication1.Controllers
         }
 
         [AllowAnonymous]
+        [HttpGet]
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public IActionResult Privacy(PrivacyViewModel model)
+        {
+            
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -1,7 +1,7 @@
 ﻿
 namespace WebApplication1.Models
 {
-    public class MockEmployeeRepository : IEmployeeRepository
+    public class MockEmployeeRepository
     {
         private List<Employee> _employeeList;
 
@@ -36,6 +36,11 @@ namespace WebApplication1.Models
 
             return employee;
 
+        }
+
+        public Privacy Add(Privacy privacy)
+        {
+            return null;
         }
         
         public Employee Delete(int id)

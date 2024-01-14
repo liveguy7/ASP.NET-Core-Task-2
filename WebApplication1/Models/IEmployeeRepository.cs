@@ -9,6 +9,8 @@ namespace WebApplication1.Models
         Employee Update(Employee employeeChanges);
         Employee Delete(int id);
 
+        
+
     }
 }
 
